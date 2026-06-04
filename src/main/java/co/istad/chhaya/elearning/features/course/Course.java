@@ -2,6 +2,9 @@ package co.istad.chhaya.elearning.features.course;
 
 
 import co.istad.chhaya.elearning.features.category.Category;
+import co.istad.chhaya.elearning.features.enrollment.Enrollment;
+import co.istad.chhaya.elearning.features.instructor.InstructorProfile;
+import co.istad.chhaya.elearning.features.video.Video;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +12,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,5 +39,18 @@ public class Course {
 
     @ManyToOne
     private Category category;
+
+    @OneToMany(mappedBy = "course")
+    private List<Video> videos;
+
+    @OneToMany(mappedBy = "course")
+    private List<Enrollment> enrollments;
+
+    @ManyToOne
+    @JoinColumn(name = "instructor_id")
+    private InstructorProfile instructorProfile;
+
+    private Boolean isPublished;
+    private Boolean isDeleted;
 
 }
