@@ -4,9 +4,11 @@ import co.istad.chhaya.elearning.features.category.Category;
 import co.istad.chhaya.elearning.features.category.CategoryRepository;
 import co.istad.chhaya.elearning.features.course.dto.CourseResponse;
 import co.istad.chhaya.elearning.features.course.dto.CreateCourseRequest;
+import co.istad.chhaya.elearning.features.instructor.InstructorProfile;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -22,7 +24,7 @@ public class CourseServiceImpl implements CourseService{
     private final CourseMapper courseMapper;
 
     @Override
-    public CourseResponse createCourse(CreateCourseRequest createCourseRequest) {
+    public CourseResponse createCourse(CreateCourseRequest createCourseRequest, Jwt jwt) {
         // TODO: write your logic
         // Validate slug
         if (courseRepository.existsBySlug(createCourseRequest.slug())) {
@@ -47,6 +49,7 @@ public class CourseServiceImpl implements CourseService{
         course.setIsPublished(false);
         course.setCreatedAt(LocalDateTime.now());
         course.setUpdatedAt(LocalDateTime.now());
+        course.setInstructorProfile(new InstructorProfile(jwt.getSubject()));
 
         course = courseRepository.save(course);
 

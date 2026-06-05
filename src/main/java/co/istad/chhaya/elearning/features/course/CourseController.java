@@ -22,8 +22,7 @@ public class CourseController {
             @Valid @RequestBody CreateCourseRequest createCourseRequest,
             @AuthenticationPrincipal Jwt jwt
     ) {
-        IO.print("JWT: " + jwt.getSubject());
-        return courseService.createCourse(createCourseRequest);
+        return courseService.createCourse(createCourseRequest, jwt);
     }
 
 }
