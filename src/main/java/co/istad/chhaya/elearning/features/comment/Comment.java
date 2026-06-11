@@ -1,5 +1,6 @@
 package co.istad.chhaya.elearning.features.comment;
 
+import co.istad.chhaya.elearning.config.auditing.BasedEntity;
 import co.istad.chhaya.elearning.features.video.Video;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "comments")
-public class Comment {
+public class Comment extends BasedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -26,6 +27,4 @@ public class Comment {
 
     @ManyToOne
     private Video video;
-
-    private LocalDateTime createdAt;
 }

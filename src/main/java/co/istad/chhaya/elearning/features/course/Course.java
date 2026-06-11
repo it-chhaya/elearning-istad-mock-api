@@ -1,6 +1,7 @@
 package co.istad.chhaya.elearning.features.course;
 
 
+import co.istad.chhaya.elearning.config.auditing.BasedEntity;
 import co.istad.chhaya.elearning.features.category.Category;
 import co.istad.chhaya.elearning.features.enrollment.Enrollment;
 import co.istad.chhaya.elearning.features.instructor.InstructorProfile;
@@ -19,7 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "courses")
-public class Course {
+public class Course extends BasedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -34,8 +35,6 @@ public class Course {
     private String level;
     private BigDecimal price;
     private Float discountPercent;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     @ManyToOne
     private Category category;

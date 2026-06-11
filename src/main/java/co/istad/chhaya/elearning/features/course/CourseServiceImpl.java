@@ -47,8 +47,6 @@ public class CourseServiceImpl implements CourseService{
         course.setStarRating(0F);
         course.setIsDeleted(false);
         course.setIsPublished(false);
-        course.setCreatedAt(LocalDateTime.now());
-        course.setUpdatedAt(LocalDateTime.now());
         course.setInstructorProfile(new InstructorProfile(jwt.getSubject()));
 
         course = courseRepository.save(course);

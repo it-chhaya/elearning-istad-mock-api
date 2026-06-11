@@ -1,5 +1,6 @@
 package co.istad.chhaya.elearning.features.video;
 
+import co.istad.chhaya.elearning.config.auditing.BasedEntity;
 import co.istad.chhaya.elearning.features.comment.Comment;
 import co.istad.chhaya.elearning.features.course.Course;
 import jakarta.persistence.*;
@@ -14,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "videos")
-public class Video {
+public class Video extends BasedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
