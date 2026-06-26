@@ -24,7 +24,9 @@ public class JpaEntityAuditorAware implements AuditorAware<String> {
         if (auth != null) {
             Jwt jwt = (Jwt) auth.getPrincipal();
             if (jwt != null) {
-                return Optional.of(jwt.getSubject());
+                //return Optional.of(jwt.getSubject());
+                String username = jwt.getClaimAsString("preferred_username");
+                return Optional.of(username);
             }
         }
 
