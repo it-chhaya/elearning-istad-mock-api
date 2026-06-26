@@ -7,6 +7,6 @@ import org.springframework.security.oauth2.jwt.Jwt;
 public interface CourseService {
 
     // Create a new course
-    CourseResponse createCourse(CreateCourseRequest createCourseRequest, Jwt jwt);
+    CourseResponse createCourse(CreateCourseRequest createCourseRequest);
 
 }

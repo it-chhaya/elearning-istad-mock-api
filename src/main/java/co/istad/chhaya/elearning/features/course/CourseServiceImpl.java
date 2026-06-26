@@ -5,10 +5,13 @@ import co.istad.chhaya.elearning.features.category.CategoryRepository;
 import co.istad.chhaya.elearning.features.course.dto.CourseResponse;
 import co.istad.chhaya.elearning.features.course.dto.CreateCourseRequest;
 import co.istad.chhaya.elearning.features.instructor.InstructorProfile;
+import co.istad.chhaya.elearning.security.AuthUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -24,7 +27,7 @@ public class CourseServiceImpl implements CourseService{
     private final CourseMapper courseMapper;
 
     @Override
-    public CourseResponse createCourse(CreateCourseRequest createCourseRequest, Jwt jwt) {
+    public CourseResponse createCourse(CreateCourseRequest createCourseRequest) {
         // TODO: write your logic
         // Validate slug
         if (courseRepository.existsBySlug(createCourseRequest.slug())) {
@@ -47,7 +50,7 @@ public class CourseServiceImpl implements CourseService{
         course.setStarRating(0F);
         course.setIsDeleted(false);
         course.setIsPublished(false);
-        course.setInstructorProfile(new InstructorProfile(jwt.getSubject()));
+        course.setInstructorProfile(new InstructorProfile(AuthUtils.extractUserId()));
 
         course = courseRepository.save(course);
 

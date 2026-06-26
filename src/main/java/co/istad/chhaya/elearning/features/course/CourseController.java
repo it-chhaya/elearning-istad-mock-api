@@ -19,10 +19,9 @@ public class CourseController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public CourseResponse createCourse(
-            @Valid @RequestBody CreateCourseRequest createCourseRequest,
-            @AuthenticationPrincipal Jwt jwt
+            @Valid @RequestBody CreateCourseRequest createCourseRequest
     ) {
-        return courseService.createCourse(createCourseRequest, jwt);
+        return courseService.createCourse(createCourseRequest);
     }
 
 }
