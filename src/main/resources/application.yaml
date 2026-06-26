@@ -4,7 +4,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/istad-oauth2
+          issuer-uri: http://localhost:8080/realms/elearning
   jpa:
     hibernate:
       ddl-auto: update

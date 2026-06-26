@@ -19,6 +19,9 @@ repositories {
 }
 
 dependencies {
+
+    implementation 'org.keycloak:keycloak-admin-client:26.0.9'
+
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.3'
 
     annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
