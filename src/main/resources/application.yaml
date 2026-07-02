@@ -17,3 +17,9 @@ spring:
     name: elearning-a01-m1
 server:
   port: 8888
+keycloak:
+  server-url: http://localhost:8080
+  client-id: spring-boot-elearning
+  client-secret: 1bGcihYcg3rbVxO00OkhMBTO3b3r7vVP
+  realm: master
+  target-realm: elearning
