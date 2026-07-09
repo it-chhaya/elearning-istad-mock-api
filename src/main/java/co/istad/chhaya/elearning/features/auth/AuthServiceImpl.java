@@ -74,6 +74,14 @@ public class AuthServiceImpl implements AuthService{
                         .getFirst();
                 log.info("Created user {}", createdUser.getId());
 
+                // Start send email verification
+                UserResource userResource = keycloak
+                        .realm(props.getTargetRealm())
+                        .users()
+                        .get(createdUser.getId());
+                userResource.sendVerifyEmail();
+
+
                 return RegisterResponse.builder()
                         .id(createdUser.getId())
                         .username(createdUser.getUsername())
