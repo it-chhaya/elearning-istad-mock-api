@@ -1,10 +1,9 @@
-
 spring:
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/elearning
+          issuer-uri: http://localhost:8889/realms/elearning
   jpa:
     hibernate:
       ddl-auto: update
@@ -18,8 +17,8 @@ spring:
 server:
   port: 8888
 keycloak:
-  server-url: http://localhost:8080
+  server-url: http://localhost:8889
   client-id: spring-boot-elearning
-  client-secret: 1bGcihYcg3rbVxO00OkhMBTO3b3r7vVP
+  client-secret: Swf1heYpE03N3XeuJJvaJWTpO2b9Zaqp
   realm: master
   target-realm: elearning
