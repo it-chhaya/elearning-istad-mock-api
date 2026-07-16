@@ -1,0 +1,18 @@
+networks:
+  m1-net:
+volumes:
+  postgres-m1-vol:
+services:
+  postgres-m1:
+    image: postgres:18.4
+    container_name: postgres-m1
+    ports:
+      - "8432:5432"
+    environment:
+      POSTGRES_PASSWORD: qwerqwer
+      POSTGRES_USER: m1usr
+    volumes:
+      - "postgres-m1-vol:/var/lib/postgresql/18/docker"
+      - "./init-scripts:/docker-entrypoint-initdb.d"
+    networks:
+      - m1-net

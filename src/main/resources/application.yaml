@@ -9,10 +9,10 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/db_elearning_a01_m1
+    url: jdbc:postgresql://localhost:8432/elearning_db
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: qwer
+    username: m1usr
+    password: qwerqwer
   application:
     name: elearning-a01-m1
 server:

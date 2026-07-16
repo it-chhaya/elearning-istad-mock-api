@@ -14,27 +14,11 @@ import java.util.List;
 @EnableConfigurationProperties
 @EnableJpaAuditing
 @SpringBootApplication
-public class ElearningA01M1Application implements CommandLineRunner {
+public class ElearningA01M1Application {
 
     public static void main(String[] args) {
         SpringApplication.run(ElearningA01M1Application.class, args);
     }
 
-    private CourseRepository courseRepository;
-
-    @Autowired
-    public void setCourseRepository(CourseRepository courseRepository) {
-        this.courseRepository = courseRepository;
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        List<Course> courses = courseRepository.allCourses();
-        Course course = courseRepository.byId(2);
-
-        IO.print(course.getTitle());
-
-        //courses.forEach(course -> IO.print(course.getTitle()));
-    }
 
 }
